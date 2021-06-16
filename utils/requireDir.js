@@ -8,7 +8,7 @@ module.exports = function bindRoute(app) {
   var modules = requireDirectory(module, '../src/router/routes', { include: whitelist, visit: whenLoadModule });
 
   function whenLoadModule(obj) {
-    console.log('obj', obj);
+    // console.log('obj', obj);
     if (obj instanceof Router) {
       // app.use(obj.routes(), obj.allowedMethods())
       app.use(obj.routes())

@@ -9,18 +9,19 @@ let app = new Koa();
 
 // 可以通过 koa-cors 中间件进行配置
 app.use(async (ctx, next) => {
-  console.log('cors');
+  // console.log('cors');
+  // ctx.set('Access-Control-Allow-Origin', 'http://1.116.142.138:8081');
   ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token');
   ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
   ctx.set('Content-Type', 'application/json');
-  ctx.set("Access-Control-Allow-Credentials", "true",);
+  ctx.set("Access-Control-Allow-Credentials", "true");
   await next();
 });
 
 
 app.use(async (ctx, next) => {
-  console.log(ctx.method);
+  // console.log(ctx.method);
   if (ctx.method === 'OPTIONS') {
     ctx.response.status = 200;
   } else {
