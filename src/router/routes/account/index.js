@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Router = require('koa-router');
 const jwt = require('../../../../utils/jwt.js');
+const mysql = require('../../../../mysql/index.js');
 
 let router = Router();
 const captcha = '1234';
@@ -123,19 +124,30 @@ router.post('/login', async (ctx, next) => {
   // ctx.body = 'login';
   console.log('ctx.request.body', ctx.request.body)
   let data = ctx.request.body;
-  const file = await fs.readFileSync(path.join(__dirname, './data.json'));
-  console.log('file', JSON.parse(file.toString()));
-  let fileArr = JSON.parse(file.toString());
-  for (let i = 0; i < fileArr.length; i++) {
-    if (fileArr[i].username === data.username && fileArr[i].password === data.password && data.captcha === '1234') {
+  // const file = await fs.readFileSync(path.join(__dirname, './data.json'));
+  const res = await mysql.query({name: data.username, pwd: data.password})
+    console.log('mysql', res);
+    if(res.length > 0) {
       ctx.success({
         msg: '登录成功',
         token: jwt.generateToken({ username: data.username, password: data.password })
       })
-      return
+      return;
     }
-  }
-  ctx.fail('登录失败', 40003)
+    ctx.fail('登录失败', 0)
+
+  // console.log('file', JSON.parse(file.toString()));
+  // let fileArr = JSON.parse(file.toString());
+  // for (let i = 0; i < fileArr.length; i++) {
+  //   if (fileArr[i].username === data.username && fileArr[i].password === data.password && data.captcha === '1234') {
+  //     ctx.success({
+  //       msg: '登录成功',
+  //       token: jwt.generateToken({ username: data.username, password: data.password })
+  //     })
+  //     return
+  //   }
+  // }
+  // ctx.fail('登录失败', 0)
 })
 
 // router.get('/aaa', async (ctx, next) => {
