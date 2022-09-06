@@ -1,6 +1,16 @@
 
 
-const whiteUrl = ['/login', '/getms', '/registerModule', '/getRandomNum', '/gettest', '/getPDFRandomNum']
+const whiteUrl = [
+  '/login', 
+  '/getms', 
+  '/registerModule', 
+  '/getRandomNum', 
+  '/gettest', 
+  '/getPDFRandomNum',
+  '/getExecl',
+  '/uploadExcel',
+  '/downloadExecl',
+]
 
 module.exports = whiteUrl;
 
