@@ -5,7 +5,7 @@ const routerResponse = require('./routerResponse');
 const bodyParser = require('koa-bodyparser');
 const verifyToken = require('./middlewares/verifyToken.js');
 const bindRoute = require('./utils/requireDir');
-const koa2Multiparty = require('koa2-multiparty');
+// const koa2Multiparty = require('koa2-multiparty');
 const koaBody = require('koa-body');
 
 const argv = process.argv;
