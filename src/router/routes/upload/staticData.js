@@ -165,9 +165,9 @@ router.post("/uploadExcel", (ctx, next) => {
   //   console.log('error', error);
   // }
 
-  ctx.set("Content-Disposition", "attachment;filename=testFile.xlsx"); //attachment
-  ctx.set("Content-Type", "application/octet-stream");
-  ctx.set("Access-Control-Expose-Headers", "Content-Disposition");
+  // ctx.set("Content-Disposition", "attachment;filename=testFile.xlsx"); //attachment
+  // ctx.set("Content-Type", "application/octet-stream");
+  // ctx.set("Access-Control-Expose-Headers", "Content-Disposition");
 
   // const buffer = xlsx.build(getXlsxNum(ctx.request.query));
   // const buffer = xlsx.build(getXlsxNum(getData()));
@@ -178,7 +178,8 @@ router.post("/uploadExcel", (ctx, next) => {
   //Array.isArray(fileList) ? fileList : Array(fileList)
   //为了单文件上传和多文件上传都可以读取到正确的路径
   for (let file of Array.isArray(fileList) ? fileList : Array(fileList)) {
-    // console.log('file', file);
+    console.log('file', file);
+    // file.originalFilename 是上传文件的名称
     basenameList.push(file.newFilename);
   }
   let urlList = [];
