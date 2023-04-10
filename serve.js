@@ -17,7 +17,9 @@ app.use(async (ctx, next) => {
   // console.log("ctx.is('multipart')", ctx.is('multipart'))
   // console.log('cors');
   if (env === 'dev') {
-    ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    // ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    // ctx.set('Access-Control-Allow-Origin', 'http://127.0.0.1:5173');
+    ctx.set('Access-Control-Allow-Origin', '*');
   } else {
     ctx.set('Access-Control-Allow-Origin', 'http://1.116.142.138:8081');
   }

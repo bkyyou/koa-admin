@@ -194,4 +194,27 @@ router.post("/uploadExcel", (ctx, next) => {
   ctx.body = buffer;
 });
 
+
+/**
+ * 接收文件
+ */
+router.post("/getStudentSource", (ctx, next) => {
+  const data = [
+    {
+      name: 'sheet1',
+      data: [
+        ['name', 'id', 'source'],
+        ['zs', 100, 99],
+        ['ls', 100, 99],
+        ['ww', 100, 99],
+      ]
+    }
+  ]
+
+  const buffer = xlsx.build(data);
+  ctx.body = buffer;
+});
+
+
+
 module.exports = router;

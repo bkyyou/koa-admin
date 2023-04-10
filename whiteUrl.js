@@ -10,6 +10,7 @@ const whiteUrl = [
   '/getExecl',
   '/uploadExcel',
   '/downloadExecl',
+  '/getStudentSource',
 ]
 
 module.exports = whiteUrl;
