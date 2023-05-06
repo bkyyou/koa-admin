@@ -47,7 +47,8 @@ conn.on('ready', async () => {
     return
   }
   console.log('jenkins: 我挂了，正在尝试启动');
-  myexec('docker start 426fae94ea33');
-
+  const dockerStartRes = await myexec('docker start 426fae94ea33');
+  console.log('dockerStartRes', dockerStartRes);
+  conn.end();
 }).connect(config);
 
