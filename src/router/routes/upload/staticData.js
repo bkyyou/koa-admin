@@ -194,6 +194,30 @@ router.post("/uploadExcel", (ctx, next) => {
   ctx.body = buffer;
 });
 
+/**
+ * 接收文件， 测试多文件
+ */
+// router.post("/uploadExcel", multer().single('file'), (ctx, next) => {
+router.post("/testMultipleFiles", (ctx, next) => {
+
+  let basenameList = [];
+  const fileList = ctx.request.files["file"];
+  //Array.isArray(fileList) ? fileList : Array(fileList)
+  //为了单文件上传和多文件上传都可以读取到正确的路径
+  for (let file of Array.isArray(fileList) ? fileList : Array(fileList)) {
+    // console.log('file', file);
+    // file.originalFilename 是上传文件的名称
+    basenameList.push(file.newFilename);
+  }
+  let urlList = [];
+  for (let k in basenameList) {
+    urlList.push(`${ctx.origin}/${basenameList[k]}`);
+  }
+  ctx.success({
+    msg: '上传成功',
+  })
+});
+
 
 /**
  * 接收文件
