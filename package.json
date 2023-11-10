@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vue/server-renderer": "^3.3.4",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.0",
     "koa-body": "^5.0.0",
@@ -18,12 +19,15 @@
     "koa-multer": "^1.0.2",
     "koa-router": "^9.4.0",
     "koa-send": "^5.0.1",
+    "koa-static": "^5.0.0",
     "mathjs": "^11.1.0",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "node-xlsx": "^0.21.0",
     "officegen": "^0.6.5",
+    "puppeteer": "^21.2.1",
     "require-directory": "^2.1.1",
-    "ssh2": "^1.11.0"
+    "ssh2": "^1.11.0",
+    "vue": "^3.3.4"
   }
 }

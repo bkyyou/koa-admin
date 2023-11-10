@@ -12,6 +12,7 @@ const whiteUrl = [
   '/downloadExecl',
   '/getStudentSource',
   '/testMultipleFiles',
+  '/vue'
 ]
 
 module.exports = whiteUrl;

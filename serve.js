@@ -7,6 +7,7 @@ const verifyToken = require('./middlewares/verifyToken.js');
 const bindRoute = require('./utils/requireDir');
 // const koa2Multiparty = require('koa2-multiparty');
 const koaBody = require('koa-body');
+const statics = require('koa-static');
 
 const argv = process.argv;
 const env = argv[2];
@@ -39,6 +40,10 @@ app.use(async (ctx, next) => {
     await next();
   }
 })
+
+app.use(statics(
+  path.join(__dirname, 'public')
+))
 
 // 响应设置统一设置
 app.use(routerResponse());
